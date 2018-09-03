@@ -17,8 +17,10 @@ int main(int argc, char** argv) {
 
     printf("Enter a value: ");
     char str[100];
-    scanf("%c", str);
-    printf("\n you entered: ");
+    int i;
+    scanf("%s %d", str, &i);
+    printf("\nYou entered: ");
     printf(str);
+    printf("\n");
     return 0;
 }
