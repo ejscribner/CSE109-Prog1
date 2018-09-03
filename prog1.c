@@ -8,7 +8,7 @@ Program #1
 
 #include <stdio.h>
 
-int main() {
-    printf("Hello, World!\n");
+int main(int argc) {
+    printf(argc);
     return 0;
 }
