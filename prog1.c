@@ -8,7 +8,7 @@ Program #1
 
 #include <stdio.h>
 
-int main(int argc) {
-    printf(argc);
+int main(int argc, char** argv) {
+    printf(argv[1]);
     return 0;
 }
