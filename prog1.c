@@ -9,14 +9,28 @@ Program #1
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-int main(int argc, char** argv) { 
-    char* word;
+void reverse(char* input);
+int main(int argc, char** argv) {
+    char* input;
     for(int i = 0; i < argc; i++) {
         fprintf(stdout, "Arg %d: %s\n", i, argv[i]);
         printf("\n");
     }
-    printf("Enter a value: ");
-    fscanf(stdin, "%m[^\n]s", &word);
-    fprintf(stdout, "\nYou entered: %s\n", word);
+    fprintf(stdout, "Enter a value: ");
+    fscanf(stdin, "%m[^\n]s", &input);
+    input = "Test Testing";
+    fprintf(stdout, "\nYou entered: %s\n", input);
+
+   // free(input);
+
+    reverse(input);
     return 0;
+}
+//currently not being hit by call
+void reverse(char* input) {
+    for(int i = 0; i < sizeof(input); i++) {
+        printf("hi");
+        printf((char*)input[i]);
+        printf("\n");
+    }
 }
