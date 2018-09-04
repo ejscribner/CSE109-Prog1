@@ -16,8 +16,8 @@ Program #1
 int test();
 int main(int argc, char** argv) {
     int t = test();
-
-    char* input;
+    fprintf(stdout, "%i", t);
+    //char* input;
     for(int i = 0; i < argc; i++) {
         fprintf(stdout, "Arg %d: %s\n", i, argv[i]);
         printf("\n");
@@ -25,9 +25,9 @@ int main(int argc, char** argv) {
 
 //    fprintf(stdout, "Enter a value: ");
 //    fscanf(stdin, "%m[^\n]s", &input);
-//    input = "Test Testing";
+   // input = "Test Testing";
     printf("%s\n", readline("Enter a Value: "));
-    fprintf(stdout, "\nYou entered: %s\n", input);
+   // fprintf(stdout, "\nYou entered: %s\n", input);
 
    // free(input);
 
