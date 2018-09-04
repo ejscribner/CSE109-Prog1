@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
 
 
     reverseWord(line, sizeof(line));
-    fprintf(stdout, "Line is: %s", line);
+    fprintf(stdout, "Line is: %s\n", line);
     free(line);
     line = NULL;
     return 0;
