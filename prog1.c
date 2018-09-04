@@ -12,36 +12,38 @@ Program #1
 #include <readline/readline.h>
 #include <readline/history.h>
 
-void reverse(char input);
-int test();
+void reverseWord(char* line, size_t length);
 int main(int argc, char** argv) {
-    int t = test();
-    char input[100];
+    char* line;
     for(int i = 0; i < argc; i++) {
         fprintf(stdout, "Arg %d: %s\n", i, argv[i]);
         printf("\n");
     }
-    fprintf(stdout, "%i", t);
 
-    input = readline("Enter a Value: ");
-    fprintf(stdout, "\nYou entered: %s\n", input);
+    line = readline("Enter a Value: ");
 
-    free(input);
-    input = NULL;
-    reverse(input);
 
+    reverseWord(line, sizeof(line));
+    fprintf(stdout, "Line is: %s", line);
+    free(line);
+    line = NULL;
     return 0;
 }
-//currently not being hit by call
 
-int test() {
-    return 4;
-}
-
-void reverse(char input) {
-    for(int i = 0; i < sizeof(input); i++) {
-        printf("hi");
-        printf(input[i]);
-        printf("\n");
+void reverseWord(char* line, size_t length) {
+    char *wordStart = line;
+    char *wordEnd = line;
+    while(*wordEnd) {
+        wordEnd++;
+        if(*wordEnd == '\0') {
+            char temp;
+            char *start = wordStart;
+            char *end = wordEnd-1;
+            while (start < end) {
+                temp = *start;
+                *start++ = *end;
+                *end-- = temp;
+            }
+        }
     }
 }
