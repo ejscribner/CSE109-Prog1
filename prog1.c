@@ -13,6 +13,8 @@ Program #1
 #include <readline/history.h>
 
 void reverseWord(char* line, size_t length);
+void reverseUtil(char *start, char* end);
+
 int main(int argc, char** argv) {
     char* line;
     for(int i = 0; i < argc; i++) {
@@ -21,8 +23,6 @@ int main(int argc, char** argv) {
     }
 
     line = readline("Enter a Value: ");
-
-
     reverseWord(line, sizeof(line));
     fprintf(stdout, "Line is: %s\n", line);
     free(line);
@@ -35,15 +35,20 @@ void reverseWord(char* line, size_t length) {
     char *wordEnd = line;
     while(*wordEnd) {
         wordEnd++;
-        if(*wordEnd == '\0') {
-            char temp;
-            char *start = wordStart;
-            char *end = wordEnd-1;
-            while (start < end) {
-                temp = *start;
-                *start++ = *end;
-                *end-- = temp;
-            }
+        if(*wordEnd == ' ') {
+            reverseUtil(wordStart, wordEnd - 1);
+            wordStart = wordEnd + 1;
+        } else if(*wordEnd == '\0') {
+            reverseUtil(wordStart, wordEnd - 1);
         }
+    }
+}
+
+void reverseUtil(char *start, char* end) {
+    char temp;
+    while (start < end) {
+        temp = *start;
+        *start++ = *end;
+        *end-- = temp;
     }
 }
