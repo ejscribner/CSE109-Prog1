@@ -9,8 +9,6 @@ Program #1
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <readline/readline.h>
-#include <readline/history.h>
 #include <ctype.h>
 
 void reverseWord(char *line, size_t length);
@@ -80,8 +78,6 @@ int main(int argc, char **argv)
         free(line);
         line = NULL;
     }
-    free(line);
-    line = NULL;
     return 0;
 }
 
@@ -108,7 +104,7 @@ void reverseWord(char *line, size_t length)
     while (*wordEnd)
     {
         wordEnd++;
-        if (*wordEnd == ' ')
+        if (*wordEnd == ' ' || *wordEnd == '\t')
         {
             reverseUtil(wordStart, wordEnd - 1);
             wordStart = wordEnd + 1;
