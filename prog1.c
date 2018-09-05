@@ -80,6 +80,8 @@ int main(int argc, char **argv)
         free(line);
         line = NULL;
     }
+    free(line);
+    line = NULL;
     return 0;
 }
 
