@@ -32,8 +32,7 @@ int main(int argc, char **argv) {
         }
         runTransform(argc, argv, line);
         fprintf(stdout, "%s\n", line);
-        free(line);
-        line = NULL;
+
     }
     return 0;
 }
@@ -78,6 +77,8 @@ void runTransform(int argc, char** argv, char* line) {
     {
 
     }
+    free(line);
+    line = NULL;
 }
 
 void toggle(char *line, size_t length)
