@@ -14,20 +14,29 @@ Program #1
 #include <ctype.h>
 
 void reverseWord(char *line, size_t length);
-void reverseUtil(char *start, char *end);
-void toggle(char *line, size_t length);
-void rotate(char *line, size_t length);
-size_t removeDigits(char *line, size_t length);
-void runTransform(int argc, char** argv, char* line);
 
-int main(int argc, char **argv) {
+void reverseUtil(char *start, char *end);
+
+void toggle(char *line, size_t length);
+
+void rotate(char *line, size_t length);
+
+size_t removeDigits(char *line, size_t length);
+
+void runTransform(int argc, char **argv, char *line);
+
+int main(int argc, char **argv)
+{
     char *line = NULL;
     ssize_t lineLength = 0;
     size_t n = 0;
-    while((lineLength = getline(&line, &n, stdin)) != -1) {
-        if(lineLength > 0) {
-            if(line[lineLength - 1] == '\n') {
-                line[lineLength -1] = '\0';
+    while ((lineLength = getline(&line, &n, stdin)) != -1)
+    {
+        if (lineLength > 0)
+        {
+            if (line[lineLength - 1] == '\n')
+            {
+                line[lineLength - 1] = '\0';
             }
         }
         runTransform(argc, argv, line);
@@ -38,7 +47,8 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-void runTransform(int argc, char** argv, char* line) {
+void runTransform(int argc, char **argv, char *line)
+{
     int isReverse = 0;
     int isRotate = 0;
     int isToggle = 0;
