@@ -23,8 +23,6 @@ void rotate(char *line, size_t length);
 
 size_t removeDigits(char *line, size_t length);
 
-void runTransform(int argc, char **argv, char *line);
-
 int main(int argc, char **argv)
 {
     char *line = NULL;
@@ -39,55 +37,50 @@ int main(int argc, char **argv)
                 line[lineLength - 1] = '\0';
             }
         }
-        runTransform(argc, argv, line);
+        int isReverse = 0;
+        int isRotate = 0;
+        int isToggle = 0;
+        int isRemoveDigits = 0;
+        for (int i = 0; i < argc; i++)
+        {
+            if (strcmp(argv[i], "-r") == 0)
+            {
+                isReverse = 1;
+            }
+            if (strcmp(argv[i], "-o") == 0)
+            {
+                isRotate = 1;
+            }
+            if (strcmp(argv[i], "-t") == 0)
+            {
+                isToggle = 1;
+            }
+            if (strcmp(argv[i], "-n") == 0)
+            {
+                isRemoveDigits = 1;
+            }
+        }
+        if (isReverse)
+        {
+            reverseWord(line, sizeof(line));
+        }
+        if (isToggle)
+        {
+            toggle(line, sizeof(line));
+        }
+        if (isRotate)
+        {
+
+        }
+        if (isRemoveDigits)
+        {
+
+        }
         fprintf(stdout, "%s\n", line);
         free(line);
         line = NULL;
     }
     return 0;
-}
-
-void runTransform(int argc, char **argv, char *line)
-{
-    int isReverse = 0;
-    int isRotate = 0;
-    int isToggle = 0;
-    int isRemoveDigits = 0;
-    for (int i = 0; i < argc; i++)
-    {
-        if (strcmp(argv[i], "-r") == 0)
-        {
-            isReverse = 1;
-        }
-        if (strcmp(argv[i], "-o") == 0)
-        {
-            isRotate = 1;
-        }
-        if (strcmp(argv[i], "-t") == 0)
-        {
-            isToggle = 1;
-        }
-        if (strcmp(argv[i], "-n") == 0)
-        {
-            isRemoveDigits = 1;
-        }
-    }
-    if (isReverse)
-    {
-        reverseWord(line, sizeof(line));
-    }
-    if (isToggle)
-    {
-        toggle(line, sizeof(line));
-    }
-    if (isRotate)
-    {
-
-    }
-    if (isRemoveDigits)
-    {
-
-    }
 }
 
 void toggle(char *line, size_t length)
