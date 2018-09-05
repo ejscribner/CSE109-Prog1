@@ -21,15 +21,14 @@ size_t removeDigits(char *line, size_t length);
 
 int main(int argc, char **argv)
 {
-    char array[12];
-    char *line = array;
+    int fgetc(FILE *stream);
+    char *line;
     int isReverse = 0;
     int isRotate = 0;
     int isToggle = 0;
     int isRemoveDigits = 0;
-    scanf("%s", line);
 
-//    line = readline("Enter a Value: ");
+    line = readline("Enter a Value: ");
 
     for (int i = 0; i < argc; i++)
     {
