@@ -103,7 +103,6 @@ void reverseWord(char *line, size_t length)
     char *wordEnd = line;
     while (*wordEnd)
     {
-        wordEnd++;
         if (*wordEnd == ' ' || *wordEnd == '\t')
         {
             reverseUtil(wordStart, wordEnd - 1);
@@ -112,7 +111,9 @@ void reverseWord(char *line, size_t length)
         {
             reverseUtil(wordStart, wordEnd - 1);
         }
+        wordEnd++;
     }
+    reverseUtil(wordStart, wordEnd -1);
 }
 
 void reverseUtil(char *start, char *end)
