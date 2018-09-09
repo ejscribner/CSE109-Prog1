@@ -3,3 +3,4 @@ CMakeLists.txt
 cmake-build-debug/
 prog1
 cmake-build-default/
+prog1.dSYM/Contents/Info.plist

@@ -68,11 +68,11 @@ int main(int argc, char **argv)
         }
         if (isRotate)
         {
-
+            rotate(line, sizeof(line));
         }
         if (isRemoveDigits)
         {
-
+            removeDigits(line, sizeof(line));
         }
         fprintf(stdout, "%s\n", line);
         free(line);
@@ -129,10 +129,39 @@ void reverseUtil(char *start, char *end)
 
 void rotate(char *line, size_t length)
 {
+    char *wordEnd = line;
+    char *wordStart = line;
+    char letter = *wordStart;
+    char temp;
+    char *lastWord = strrchr(line, ' ');
+    char lastLetter = *(lastWord + 1);
+    *wordStart = lastLetter;
 
+    while (*wordEnd)
+    {
+        if (*wordEnd == ' ' || *wordEnd == '\t')
+        {
+            temp = *(wordEnd + 1);
+            *(wordEnd + 1) = letter;
+            letter = temp;
+        }
+        wordEnd++;
+    }
 }
 
 size_t removeDigits(char *line, size_t length)
 {
-    return 0;
+    char *wordEnd = line;
+    char *wordStart = line;
+    while (*wordEnd)
+    {
+        if (isnumber(*wordEnd))
+        {
+            wordEnd++;
+            continue;
+        }
+        *wordStart++ = *wordEnd++;
+    }
+    *wordStart = '\0';
+    return strlen(line);
 }
