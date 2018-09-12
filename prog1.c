@@ -89,7 +89,8 @@ void toggle(char *line, size_t length)
         if (isupper(*wordEnd))
         {
             *wordEnd = tolower(*wordEnd);
-        } else if (islower(*wordEnd))
+        }
+        else if (islower(*wordEnd))
         {
             *wordEnd = toupper(*wordEnd);
         }
@@ -107,13 +108,14 @@ void reverseWord(char *line, size_t length)
         {
             reverseUtil(wordStart, wordEnd - 1);
             wordStart = wordEnd + 1;
-        } else if (*wordEnd == '\0')
+        }
+        else if (*wordEnd == '\0')
         {
             reverseUtil(wordStart, wordEnd - 1);
         }
         wordEnd++;
     }
-    reverseUtil(wordStart, wordEnd -1);
+    reverseUtil(wordStart, wordEnd - 1);
 }
 
 void reverseUtil(char *start, char *end)
@@ -136,7 +138,6 @@ void rotate(char *line, size_t length)
     char *lastWord = strrchr(line, ' ');
     char lastLetter = *(lastWord + 1);
     *wordStart = lastLetter;
-
     while (*wordEnd)
     {
         if (*wordEnd == ' ' || *wordEnd == '\t')
@@ -155,7 +156,7 @@ size_t removeDigits(char *line, size_t length)
     char *wordStart = line;
     while (*wordEnd)
     {
-        if (isnumber(*wordEnd))
+        if (isdigit(*wordEnd))
         {
             wordEnd++;
             continue;
